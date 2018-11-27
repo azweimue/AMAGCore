@@ -7,7 +7,7 @@ export function GetWebName(url: string): string {
   const web = new Web(url);
   let name: string = '';
   web.get().then(w => {
-    name = w.name;
+    name = w.Title;
   });
   return name;
 }
