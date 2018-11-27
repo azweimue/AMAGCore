@@ -34,5 +34,12 @@
     "tslint": "^5.11.0",
     "tslint-config-prettier": "^1.16.0",
     "typescript": "^3.1.6"
+  },
+  "dependencies": {
+    "@pnp/common": "^1.2.6",
+    "@pnp/graph": "^1.2.6",
+    "@pnp/logging": "^1.2.6",
+    "@pnp/odata": "^1.2.6",
+    "@pnp/sp": "^1.2.6"
   }
 }

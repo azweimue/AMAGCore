@@ -1,11 +1,18 @@
 {
     "compilerOptions": {
       "target": "es5",
+      "forceConsistentCasingInFileNames": true,
       "module": "commonjs",
       "declaration": true,
       "outDir": "./lib",
-      "strict": true
+      "strict": true,
+      "lib": [
+        "es5",
+        "dom",
+        "es2015.collection"
+      ]
     },
+    
     "include": ["src"],
     "exclude": ["node_modules", "**/__tests__/*"]
   }
