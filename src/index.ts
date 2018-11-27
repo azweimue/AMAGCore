@@ -3,11 +3,8 @@ import { Web } from '@pnp/sp';
 
 export const Greeter = (name: string) => `Hello ${getRandomString(20)}`;
 
-export function GetWebName(url: string): string {
+export async function GetWebName(url: string) {
   const web = new Web(url);
-  let name: string = '';
-  web.get().then(w => {
-    name = w.Title;
-  });
-  return name;
+  const w = await web.get()
+  return  w.Title;
 }
