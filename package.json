@@ -1,6 +1,6 @@
 {
   "name": "amag-core",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "AMAG Core",
   "main": "lib/index.js lib/PropertyConfiguration.js",
   "types": "lib/index.d.ts lib/PropertyConfiguration.d.ts",
