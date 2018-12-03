@@ -2,7 +2,7 @@
   "name": "amag-core",
   "version": "1.0.8",
   "description": "AMAG Core",
-  "main": "lib/index.js",
+  "main": "lib/index.js lib/PropertyConfiguration.js",
   "types": "lib/index.d.ts lib/PropertyConfiguration.d.ts",
   "scripts": {
     "build": "tsc",
