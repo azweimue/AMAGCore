@@ -1,6 +1,6 @@
 import { getRandomString } from '@pnp/common';
 import { Web } from '@pnp/sp';
-export *  from './PropertyConfiguration';
+export * from './PropertyConfiguration';
 
 export const Greeter = (name: string) => `Hello ${getRandomString(20)}`;
 
