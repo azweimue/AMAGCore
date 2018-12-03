@@ -1,4 +1,3 @@
-
 export class PropertyConfiguration {
   public GetPropertyValue(propertyName: string): any {
     this.GetPropertyValueAjax(propertyName)
