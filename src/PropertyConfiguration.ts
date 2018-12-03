@@ -1,3 +1,4 @@
+import * as jquery from 'jquery';
 export class PropertyConfiguration {
   public GetPropertyValue(propertyName: string): any {
     this.GetPropertyValueAjax(propertyName)
@@ -9,7 +10,7 @@ export class PropertyConfiguration {
       });
   }
   private GetPropertyValueAjax(propertyName: string) {
-    return jQuery.ajax({
+    return jquery.ajax({
       headers: { accept: 'application/json;odata=verbose' },
       type: 'GET',
       url:
