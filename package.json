@@ -41,6 +41,7 @@
     "@pnp/logging": "^1.2.6",
     "@pnp/odata": "^1.2.6",
     "@pnp/sp": "^1.2.6",
-    "@types/jquery": "^3.3.22"
+    "@types/jquery": "^3.3.22",
+    "jquery": "^3.3.1"
   }
 }
