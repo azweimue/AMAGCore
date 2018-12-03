@@ -1,5 +1,5 @@
 export class PropertyConfiguration {
-  public GetPropertyValue(propertyName: string) : any {
+  public GetPropertyValue(propertyName: string): any {
     this.GetPropertyValueAjax(propertyName)
       .done(result => {
         return result;
