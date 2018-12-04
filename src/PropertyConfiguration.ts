@@ -1,24 +1,30 @@
 import * as jquery from 'jquery';
-export class PropertyConfiguration {
-  public GetPropertyValue(propertyName: string): any {
-    this.GetPropertyValueAjax(propertyName)
-      .done(result => {
-        return result;
-      })
-      .fail(() => {
-        // An error occurred
-      });
-  }
-  private GetPropertyValueAjax(propertyName: string) {
-    return jquery.ajax({
-      headers: { accept: 'application/json;odata=verbose' },
-      type: 'GET',
-      url:
-        'https://intranettest.amag.at/_layouts/15/AMAG.Intranet.Core/CoreWebService.asmx/GetPropertyValue?$propertyName=Test',
+import {Promise} from 'es6-promise';
 
-      // ,
-      // success: onCompleted,
-      // error: onError
-    });
+export class PropertyConfiguration {
+  public GetPropertyValue(propertyName: string, webURL: string) {
+    let promiseObj = new Promise((resolve : any, reject : any) => {
+      var url = webURL + "/_vti_bin/CoreWebService.svc/GetPropertyValue/" + propertyName; 
+      let xhr = new XMLHttpRequest();
+       xhr.open("GET", url, true,);
+       xhr.send();
+       xhr.onreadystatechange = function(){
+       if (xhr.readyState === 4){
+          if (xhr.status === 200){
+             console.log("xhr done successfully");
+             var resp = xhr.responseText;
+             var respJson = JSON.parse(resp);
+             resolve(respJson);
+          } else {
+             reject(xhr.status);
+             console.log("xhr failed");
+          }
+       } else {
+          console.log("xhr processing going on");
+       }
+    }
+    console.log("request sent succesfully");
+   });
+  return promiseObj;
   }
 }
