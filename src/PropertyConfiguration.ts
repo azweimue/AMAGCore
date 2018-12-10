@@ -13,7 +13,7 @@ export abstract class PropertyConfiguration {
             // const resp = xhr.responseText;
             // const respJson = JSON.parse(resp);
             // resolve(respJson);
-            resolve(xhr.responseText);
+            resolve(JSON.parse(xhr.responseText));
           } else {
             reject(xhr.status);
           }
