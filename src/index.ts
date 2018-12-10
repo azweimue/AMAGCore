@@ -1,3 +1,3 @@
-//import {PropertyConfiguration} from './PropertyConfiguration';
+// import {PropertyConfiguration} from './PropertyConfiguration';
 
 export {PropertyConfiguration} from './PropertyConfiguration';
