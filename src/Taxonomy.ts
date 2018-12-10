@@ -18,8 +18,8 @@ export abstract class Taxonomy {
     return term;
   }
 
-  public async getParentTerms(termData: (ITermData & ITerm)): Promise<(ITermData & ITerm)[]> {
-    const parents: ITerm[] = new Array<ITerm>();
+  public async getParentTerms(termData: (ITermData & ITerm)): Promise<Array<(ITermData & ITerm)>> {
+    const parents: ITerm[] = new Array<ITermData & ITerm>();
     if (termData.PathOfTerm) {
       const numberOfParents = termData.PathOfTerm.split(';').length - 1;
       for (let index = 0; index < numberOfParents; index++) {
