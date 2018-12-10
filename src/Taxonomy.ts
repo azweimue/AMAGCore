@@ -1,5 +1,5 @@
 import { sp, UserIdInfo, Web } from '@pnp/sp';
-import { ITerm, ITermData, ITerms, ITermSet, Term } from '@pnp/sp-taxonomy';
+import { ITerm, ITermData, ITerms, ITermSet, ITermSetData, Term } from '@pnp/sp-taxonomy';
 
 import { Constants } from './Constants';
 
@@ -18,14 +18,13 @@ export abstract class Taxonomy {
     return term;
   }
 
-  public async getParentTerms(term: ITerm): Promise<ITerm[]> {
-    const termData: ITermData & ITerm = await term.get();
+  public async getParentTerms(termData: (ITermData & ITerm)): Promise<(ITermData & ITerm)[]> {
     const parents: ITerm[] = new Array<ITerm>();
     if (termData.PathOfTerm) {
       const numberOfParents = termData.PathOfTerm.split(';').length - 1;
       for (let index = 0; index < numberOfParents; index++) {
-        term = term.parent;
-        parents.push(term);
+        termData = await termData.parent.get();
+        parents.push(termData);
       }
     }
     return parents;
@@ -42,11 +41,11 @@ export abstract class Taxonomy {
     }
   }
 
-  public async getWssIdsFor(terms: ITerm[], termSet: ITermSet) {
+  public async getWssIdsFor(termsData: (ITermData & ITerm)[], termSetData: (ITermSetData & ITermSet)) {
     const wssIDs: number[] = [];
-    for (const term of terms) {
-      const termData = await term.get();
-      const termSetData = await termSet.get();
+    for (const termData of termsData) {
+      //const termData = await term.get();
+      // const termSetData = await termSet.get();
       // const termSet = await terms[index].termSet.get();
       if (termData.Id && termSetData.Id) {
         const wss = await sp.web.lists
