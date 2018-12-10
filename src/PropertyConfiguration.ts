@@ -1,5 +1,4 @@
-import { Promise } from 'es6-promise';
-import * as jquery from 'jquery';
+// import { Promise } from 'es6-promise';
 
 export abstract class PropertyConfiguration {
   public static GetPropertyValue(propertyName: string, webURL: string): Promise<string> {
@@ -11,9 +10,10 @@ export abstract class PropertyConfiguration {
       xhr.onreadystatechange = () => {
         if (xhr.readyState === 4) {
           if (xhr.status === 200) {
-            const resp = xhr.responseText;
-            const respJson = JSON.parse(resp);
-            resolve(respJson);
+            // const resp = xhr.responseText;
+            // const respJson = JSON.parse(resp);
+            // resolve(respJson);
+            resolve(xhr.responseText);
           } else {
             reject(xhr.status);
           }
