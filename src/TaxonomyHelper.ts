@@ -4,7 +4,7 @@ import { ITerm, ITermData, ITerms, ITermSet, ITermSetData, Term } from '@pnp/sp-
 import { Constants } from './Constants';
 
 export abstract class TaxonomyHelper {
-  public async getCurrentUserTerm(termSet: ITermSet): Promise<ITerm> {
+  public static async getCurrentUserTerm(termSet: ITermSet): Promise<ITerm> {
     let term: ITerm = new Term();
     const curUserData = await sp.web.currentUser.get();
     const items = await sp.web.lists
@@ -18,7 +18,7 @@ export abstract class TaxonomyHelper {
     return term;
   }
 
-  public async getParentTerms(termData: ITermData & ITerm): Promise<Array<ITermData & ITerm>> {
+  public static async getParentTerms(termData: ITermData & ITerm): Promise<Array<ITermData & ITerm>> {
     const parents: ITerm[] = new Array<ITermData & ITerm>();
     if (termData.PathOfTerm) {
       const numberOfParents = termData.PathOfTerm.split(';').length - 1;
@@ -30,7 +30,7 @@ export abstract class TaxonomyHelper {
     return parents;
   }
 
-  public async getTermByName(label: string, termSet: ITermSet): Promise<ITerm> {
+  public static async getTermByName(label: string, termSet: ITermSet): Promise<ITerm> {
     const termsColl: ITerms = termSet.terms;
     const termsWithData = await termSet.terms.get();
     const terms: Array<ITermData & ITerm> = termsWithData.filter(x => x.Name === label);
@@ -41,7 +41,7 @@ export abstract class TaxonomyHelper {
     }
   }
 
-  public async getWssIdsFor(termsData: Array<ITermData & ITerm>, termSetData: ITermSetData & ITermSet) {
+  public static async getWssIdsFor(termsData: Array<ITermData & ITerm>, termSetData: ITermSetData & ITermSet) {
     const wssIDs: number[] = [];
     for (const termData of termsData) {
       // const termData = await term.get();
@@ -68,13 +68,13 @@ export abstract class TaxonomyHelper {
     return wssIDs;
   }
 
-  public getIdFromGUID(id: string) {
+  public static getIdFromGUID(id: string) {
     id = id.replace('/Guid(', '');
     id = id.replace(')/', '');
     return id;
   }
 
-  public getWssIdsValuesStringForCamlQuery(wssIds: number[]) {
+  public static getWssIdsValuesStringForCamlQuery(wssIds: number[]) {
     if (wssIds.length > 0) {
       let resultString = '<Values>';
       wssIds.forEach((element, index, array) => {
