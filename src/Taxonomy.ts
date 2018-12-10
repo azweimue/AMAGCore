@@ -44,7 +44,7 @@ export abstract class Taxonomy {
   public async getWssIdsFor(termsData: Array<(ITermData & ITerm)>, termSetData: (ITermSetData & ITermSet)) {
     const wssIDs: number[] = [];
     for (const termData of termsData) {
-      //const termData = await term.get();
+      // const termData = await term.get();
       // const termSetData = await termSet.get();
       // const termSet = await terms[index].termSet.get();
       if (termData.Id && termSetData.Id) {
