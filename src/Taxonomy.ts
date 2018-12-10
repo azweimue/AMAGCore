@@ -18,7 +18,7 @@ export abstract class Taxonomy {
     return term;
   }
 
-  public async getParentTerms(termData: (ITermData & ITerm)): Promise<Array<(ITermData & ITerm)>> {
+  public async getParentTerms(termData: ITermData & ITerm): Promise<Array<ITermData & ITerm>> {
     const parents: ITerm[] = new Array<ITermData & ITerm>();
     if (termData.PathOfTerm) {
       const numberOfParents = termData.PathOfTerm.split(';').length - 1;
@@ -41,7 +41,7 @@ export abstract class Taxonomy {
     }
   }
 
-  public async getWssIdsFor(termsData: Array<(ITermData & ITerm)>, termSetData: (ITermSetData & ITermSet)) {
+  public async getWssIdsFor(termsData: Array<ITermData & ITerm>, termSetData: ITermSetData & ITermSet) {
     const wssIDs: number[] = [];
     for (const termData of termsData) {
       // const termData = await term.get();
