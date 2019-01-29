@@ -86,6 +86,6 @@ export abstract class TaxonomyHelper {
       resultString += '</Values>';
       return resultString;
     }
-    return '';
+    return "<Values><Value Type='Integer'>0</Value>";
   }
 }
