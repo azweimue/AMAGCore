@@ -12,7 +12,7 @@ export abstract class TaxonomyHelper {
       .items.filter(Constants.AccountNameFieldName + " eq '" + curUserData.LoginName.split('\\')[1] + "'")
       .get();
     if (items && items.length > 0) {
-      const termGuid = items[0][Constants.OrganisationUnitFieldName].TermGuid;
+      const termGuid = items[0][Constants.OrganisationUnitFieldName][0].TermGuid;
       term = termSet.getTermById(termGuid);
     }
     return term;
